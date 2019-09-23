@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Vidly.DataServices.Models.MembershipTypeCode>
+@{
+    ViewBag.Title = "Membership Types Codes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Membership Types Codes</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.MembershipTypeCodeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.MembershipTypeDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.SignUpFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.DurationInMonths)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.DiscountRate)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.MembershipTypeCodeId
+            </td>
+            <td>
+                @item.MembershipTypeDesc
+            </td>
+            <td>
+                @item.SignUpFee
+            </td>
+            <td>
+                @item.DurationInMonths
+            </td>
+            <td>
+                @item.DiscountRate
+            </td>
+        </tr>
+    }
+    </tbody>
+
+</table>
+<div>
+    @Html.ActionLink("Back to Code Tables", "Index", "CodeTables")
+</div>

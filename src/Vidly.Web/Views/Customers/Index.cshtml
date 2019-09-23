@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Vidly.DataServices.Models.Customer>
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+<p>
+    @Html.ActionLink("New Customer", "Edit", "Customers", new {id = 0}, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-hover" id="customersTable">
+    <thead>
+    <tr>
+        <th>Customer</th>
+        <th>Email Address</th>
+        <th>Membership Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var customer in Model)
+    {
+        var dob = customer.Dob != null ? $"{customer.Dob:MM/dd/yy}" : "Unknown";
+        <tr>
+            <td>@Html.ActionLink(customer.DisplayName, "Edit", "Customers", new { id = customer.Id }, null)</td>
+            <td>@customer.EmailAddress</td>
+            <td>@customer.MembershipTypeCode.MembershipTypeDesc</td>
+        </tr>
+    }
+    </tbody>
+
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#customersTable').DataTable();
+        });
+    </script>
+}
+

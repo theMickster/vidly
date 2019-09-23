@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Code Tables";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Code Tables</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Code Table</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>@Html.ActionLink("Installment Codes", "Index", "InstallmentCodes")</td>
+    </tr>    
+    <tr>
+        <td>@Html.ActionLink("Membership Types Codes", "Index", "MembershipTypeCodes")</td>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Movie Genre Codes", "Index", "MovieGenreCodes")</td>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Movie Rating Codes", "Index", "MovieRatingCodes")</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@model Vidly.Web.ViewModels.CustomerEditViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Save", "Customers"))
+{
+    <div class="form-horizontal">
+        <h4>Edit Customer</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Customer.FirstName)
+            @Html.TextBoxFor(m => m.Customer.FirstName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Customer.LastName)
+            @Html.TextBoxFor(m => m.Customer.LastName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Customer.Dob)
+            @Html.TextBoxFor(m => m.Customer.Dob, "{0:d MMM yyyy}", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Customer.EmailAddress)
+            @Html.TextBoxFor(m => m.Customer.EmailAddress, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Customer.MembershipTypeCodeId)
+            @Html.DropDownListFor(m => m.Customer.MembershipTypeCodeId, new SelectList(Model.MembershipTypeCodes, "MembershipTypeCodeId", "MembershipTypeDesc", ""), new { @class = "form-control" })
+        </div>
+
+        <div class="checkbox">
+            <label>
+                @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribed to Newsletter?
+            </label>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+    @Html.HiddenFor(m => m.Customer.Id)
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

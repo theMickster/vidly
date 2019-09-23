@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Examples of Bootstrap Controls</h1>
+
+<div id="theModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Hello from the modal header.</h4>
+            </div>
+            <div class="modal-body">
+                <p>This is a bootstrap modal in an ASP.NET Application.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="">
+    <button id="showModal" class="btn btn-default">Open Modal</button>
+</div>
+
+
+<h2>Bootstrap Divs of various sizes...</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Example of a single, large column</h3>
+            <p>
+                Spicy jalapeno bacon ipsum dolor amet chuck burgdoggen pork corned beef tail turkey flank strip steak. Tail pork chop prosciutto boudin. Spare ribs pastrami bacon prosciutto andouille. Burgdoggen sausage biltong pork hamburger turducken tail prosciutto venison tri-tip. Frankfurter shoulder chuck cow tenderloin. Flank kevin bacon venison rump.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Columns 1 of 2</h2>
+            <p>
+                Andouille pork hamburger kevin burgdoggen boudin. Short ribs ground round burgdoggen, flank bacon sirloin kielbasa doner corned beef tri-tip brisket ball tip biltong. Ground round ham hock ribeye t-bone, swine shankle beef ribs sirloin short ribs tongue flank. Strip steak picanha porchetta meatloaf tail cow beef ribs andouille chuck ball tip. Pancetta tongue pork loin bresaola kevin chuck ham ribeye.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h2>Columns 2 of 2</h2>
+            <p>
+                Filet mignon boudin ham, flank kevin picanha spare ribs doner short loin meatloaf. Leberkas boudin burgdoggen drumstick, short ribs shoulder turducken spare ribs turkey ham. Cow frankfurter meatloaf swine, landjaeger ham meatball pancetta. Beef biltong tongue, short loin shoulder ham hock brisket boudin t-bone alcatra. Hamburger corned beef boudin, venison sausage pork chop beef. Ham hock ball tip prosciutto tri-tip, cow jowl alcatra pork loin spare ribs andouille turducken. Kielbasa turducken turkey sirloin swine alcatra filet mignon.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Columns 1 of 3</h3>
+            <p>
+                Pork shankle tongue rump tail frankfurter bacon, picanha landjaeger ground round corned beef. Chicken beef ham hock ball tip prosciutto pork chop meatball, burgdoggen pastrami cow pig bresaola turkey rump turducken. Hamburger fatback cupim pork frankfurter corned beef shankle brisket tail burgdoggen beef ribs doner tri-tip. Strip steak prosciutto shank, alcatra fatback shoulder leberkas andouille cow ball tip short loin burgdoggen biltong. Swine alcatra spare ribs pork chop, shank short ribs flank picanha short loin pork loin. Chicken andouille pastrami tenderloin, meatball landjaeger jowl filet mignon frankfurter shankle meatloaf beef short ribs.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h3>Columns 2 of 3</h3>
+            <p>
+                Flank bacon short ribs biltong bresaola. Meatball jerky capicola chuck shankle pig pork belly ribeye pork spare ribs turkey frankfurter biltong ham landjaeger. Pork belly meatball picanha sausage bacon sirloin, shankle landjaeger. Corned beef turducken ribeye tongue jerky pork belly.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h3>Columns 3 of 3</h3>
+            <p>
+                Jowl short ribs cow turducken pork loin, beef ribs kevin leberkas ground round pastrami spare ribs capicola cupim landjaeger. Chuck boudin beef jowl doner. Bacon frankfurter sirloin, cupim pig doner prosciutto andouille rump filet mignon pork ribeye meatloaf tenderloin. Frankfurter tenderloin jowl, ground round venison biltong leberkas pork belly. Short loin andouille kevin salami rump. Drumstick boudin bacon, pork belly shankle bresaola swine venison meatloaf sausage andouille.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    
+    <script>
+        $(function() {
+            var showModal = function() {
+                $("#theModal").modal("show");
+
+            };
+            $("#showModal").click(showModal);
+
+        });
+    </script>
+
+}
+

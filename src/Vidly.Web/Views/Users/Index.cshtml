@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Vidly.DataServices.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Security Users</h2>
+<p>
+    @Html.ActionLink("New User", "Create", "Users", new { id = 0 }, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-hover" id="usersTable">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayNameFor(model => model.FullName)</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.Email</td>
+            <td>@user.FullName</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = user.Id}) |
+                @Html.ActionLink("Details", "Details", new { id = user.Id })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#usersTable').DataTable();
+        });
+    </script>
+}

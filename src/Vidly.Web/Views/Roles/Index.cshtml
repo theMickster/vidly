@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Vidly.DataServices.Models.ApplicationRole>
+@{
+    ViewBag.Title = "Security Roles";
+}
+
+<h2>Security Roles</h2>
+<p>
+    @Html.ActionLink("New Role", "Create", "Roles", new { id = 0 }, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-hover" id="rolesTable">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var role in Model)
+    {
+        <tr>
+            <td> @Html.DisplayFor(modelItem => role.Id) </td>
+            <td> @Html.DisplayFor(modelItem => role.Name) </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = role.Id}) |
+                @Html.ActionLink("Details", "Details", new {id = role.Id}) 
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#rolesTable').DataTable();
+        });
+    </script>
+}

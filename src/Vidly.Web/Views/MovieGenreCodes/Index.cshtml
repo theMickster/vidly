@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Vidly.DataServices.Models.MovieGenreCode>
+@{
+    ViewBag.Title = "Movie Genre Codes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movie Genre Codes</h2>
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.IsActive)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Genre
+            </td>
+            <td>
+                @item.IsActive
+            </td>
+        </tr>
+    }
+    </tbody>
+
+</table>
+<div>
+    @Html.ActionLink("Back to Code Tables", "Index", "CodeTables")
+</div>

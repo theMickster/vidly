@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Vidly.DataServices.Models.InstallmentCode>
+@{
+    ViewBag.Title = "Installment Codes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Installment Codes</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Installment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.IsActive)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Installment
+                </td>
+                <td>
+                    @item.IsActive
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<div>
+    @Html.ActionLink("Back to Code Tables", "Index", "CodeTables")
+</div>

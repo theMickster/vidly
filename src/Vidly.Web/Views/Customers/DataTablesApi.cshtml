@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Customers - Data Tables API";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers - Data Tables API</h2>
+<table class="table table-bordered table-hover" id="customersTable">
+    <thead>
+    <tr>
+        <th>Customer</th>
+        <th>Membership Type</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            var table = $('#customersTable').DataTable({
+                ajax:
+                {
+                    url: "/vidly_api/api/customers/",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "firstName",
+                        render: function(data, type, customer) {
+                            return "<a href='/customers/edit/" + customer.id + "'>" + customer.firstName +" " + customer.lastName + "</a>";
+                        }
+                    },
+                    {
+                        data: "emailAddress"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#customersTable").on("click",
+                ".js-delete",
+                function () {
+                    var button = $(this);
+
+                    bootbox.confirm("Are you sure you want to delete this customer?",
+                        function (result) {
+                            if (result) {
+                                console.log("Customer Id: " + button.attr("data-customer-id") + " will be deleted.");
+                                $.ajax({
+                                    url: "/vidly_api/api/customers/" + button.attr("data-customer-id"),
+                                    method: "DELETE",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                        console.log("Customer Id: " + button.attr("data-customer-id") + " was successfull deleted.");
+                                        bootbox.alert("Customer Id: " + button.attr("data-customer-id") + " was successfull deleted.");
+                                    },
+                                    error: function () {
+                                        bootbox.alert("An error occurred calling the API. Look at the console (F12 or Ctrl+Shift+I, Console tab) for more information.");
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}

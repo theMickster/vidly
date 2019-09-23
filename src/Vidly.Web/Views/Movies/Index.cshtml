@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Vidly.DataServices.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+<div>
+    @Html.ActionLink("New Movie", "Edit", "Movies", new { id = 0 }, new { @class = "btn btn-primary" })
+</div>
+
+<div id="theModal" class="modal fade"  role="dialog" data-url="@Url.Action("MovieDetails")">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+        </div>
+    </div>
+</div>
+<table class="table table-bordered table-hover" id="moviesTable">
+    <thead>
+    <tr>
+        <th>Movie</th>
+        <th>Rated</th>
+        <th>Genre</th>
+        <th>Release Date</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var movie in Model)
+    {
+        var d = movie.ReleaseDate.ToShortDateString();
+        <tr>
+            <td>@Html.ActionLink(movie.MovieName, "Edit", "Movies", new {id = movie.Id}, null )</td>            
+            <td>@movie.MovieRatingCode.Rating</td>
+            <td>@movie.MovieGenreCode.Genre</td>
+            <td>@d</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = movie.Id }) |
+                @Html.ActionLink("Movie Details", "Details", "MovieDetails", new { id = movie.Id }, new { @id = ("MovieDetails" + movie.Id.ToString()) }) |
+                @Html.ActionLink("Delete", "Delete", new { id = movie.Id }, new { @id = ("Delete"+movie.Id.ToString()) })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#moviesTable').DataTable();
+        });
+
+        $('#theModal').click(function() {
+            var url = $('#theModal').data('url');
+
+            $.get(url, function(data) {
+                $('#theModal').html(data);
+
+                $('#theModal').modal('show');
+            });
+        });
+
+        $(function() {
+            var showModal = function() { $("#theModal").modal("show"); };
+            $("#showModal").click(showModal);
+        });
+
+    </script>
+    
+
+}
